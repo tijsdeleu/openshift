@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+  <div class="contentitle"><h1>New Post</h1></div>
+  {% if form is defined %}
+    <div class="item" id="nieuwepost">
+      <h1>voer hieronder een nieuwe post in</h1>
+      <div class="itemtext">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+      {% if images is defined %}
+      <div class="imageselector">
+        {% for image in images %}
+          <img class="thumbimage" src="/upload/images/{{ image.path }}">
+        {% endfor %}
+      </div>
+      </div>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endblock %}
+{% block sidebar2 %}
+   
+
+{% endblock %}

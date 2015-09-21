@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block sidebar1 %}
+ <div class="item" id="loginform">
+    {% if dbuser is defined %}
+      <h1>userpanel</h1>
+      <div class="itemtext">
+        <p>Welkom, <b>{{ dbuser.username }}</b>.</p>
+        <p><a href="/logout">uitloggen</a></p>
+        {% if dbuser.admin == 3 %}
+        <h2>admin menu:</h2>
+        <ul>
+          <li>nieuwe post</li>
+          <li><a href="">admin aanwijzen</a></li>
+        </ul>
+        {% endif %}
+        {% if dbuser.admin == 1 %}
+          <h2>user menu:</h2>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}
+{% block content %}
+  <div class="contentitle"><h1>New Post</h1></div>
+  {% if form is defined %}
+    <div class="item" id="nieuwepost">
+      <h1>voer hieronder een nieuwe post in</h1>
+      <div class="itemtext">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
+{% block sidebar2 %}
+   
+    <div class="item" id="latest">
+      <h1>laatste nieuws</h1>
+      <div class="itemtext">
+        <ul>
+          <li><a href="">{% if newsitems[0] is defined %} {{ newsitems[0].titel }} {% endif %}</a></li>
+          <li><a href="">{% if newsitems[1] is defined %} {{ newsitems[1].titel }} {% endif %}</a></li>
+          <li><a href="">{% if newsitems[2] is defined %} {{ newsitems[2].titel }} {% endif %}</a></li>
+          <li><a href="">{% if newsitems[3] is defined %} {{ newsitems[3].titel }} {% endif %}</a></li>
+          <li><a href="">{% if newsitems[4] is defined %} {{ newsitems[4].titel }} {% endif %}</a></li>
+        </ul>
+      </div>
+    </div>
+{% endblock %}

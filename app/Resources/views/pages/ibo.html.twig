@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block sidebar1 %}
+  <div class="item" id="loginform">
+    {% if form is defined %}
+      <h1>login</h1>
+      <div class="itemtext">
+        {% if warning != "" %}
+          <p style="color:#800">{{ warning }}</p>
+        {% endif %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+      </div>
+    {% endif %}
+    {% if form is not defined and dbuser is defined %}
+      <h1>userpanel</h1>
+      <div class="itemtext">
+        <p>Welkom, <b>{{ dbuser.username }}</b>.</p>
+        <p><a href="/logout">uitloggen</a></p>
+        {% if dbuser.admin == 3 %}
+          <h2>admin menu:</h2>
+          <ul>
+            <li><a href="newpost">nieuwe post</a></li>
+            <li><a href="">admin aanwijzen</a></li>
+          </ul>
+        {% endif %}
+        {% if dbuser.admin == 1 %}
+          <h2>user menu:</h2>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+<div class="item" id="latest">
+    <h1>laatste nieuws</h1>
+    <div class="itemtext">
+      <ul>
+        <li>{% if newsitems[0] is defined %}<a href="viewpost/{{ newsitems[0].id }}">[{{ newsitems[0].datum|date('y-m-d') }}] <b>{{ newsitems[0].titel }}</b> </a>{% endif %}</li>
+        <li>{% if newsitems[1] is defined %}<a href="viewpost/{{ newsitems[1].id }}">[{{ newsitems[1].datum|date('y-m-d') }}] <b>{{ newsitems[1].titel }}</b> </a>{% endif %}</li>
+        <li>{% if newsitems[2] is defined %}<a href="viewpost/{{ newsitems[2].id }}">[{{ newsitems[2].datum|date('y-m-d') }}] <b>{{ newsitems[2].titel }}</b> </a>{% endif %}</li>
+        <li>{% if newsitems[3] is defined %}<a href="viewpost/{{ newsitems[3].id }}">[{{ newsitems[3].datum|date('y-m-d') }}] <b>{{ newsitems[3].titel }}</b> </a>{% endif %}</li>
+        <li>{% if newsitems[4] is defined %}<a href="viewpost/{{ newsitems[4].id }}">[{{ newsitems[4].datum|date('y-m-d') }}] <b>{{ newsitems[4].titel }}</b> </a>{% endif %}</li>
+      </ul>
+    </div>
+  </div>

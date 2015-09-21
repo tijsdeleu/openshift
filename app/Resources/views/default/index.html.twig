@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+  <div class="contentitle"><h1>home</h1></div>
+  {% for newsitem in newsitems %}
+    <div class="item">
+      <h1>{{ newsitem.titel }} </h1>
+      <div class="itemtext">
+        <p>{{ newsitem.inhoud|nl2br }}</p>
+        <div class="iteminfo"><p>gepost door: 
+            {% for user in users %}
+            {% if user.id == newsitem.auteurid %}<a href="">{{ user.username }}</a>{% endif %}{% endfor %}, op {{ newsitem.datum|date('d-m-Y')}} om {{ newsitem.datum|date('h:i') }}u</p>
+            {% if dbuser is defined and dbuser.admin == 3 %}
+            <p style='height:20px;'><a href="deletepost/{{ newsitem.id }}"><img class="delete" src="images/delete.png"></a><a href="editpost/{{ newsitem.id }}"><img class="edit" src="images/edit.png"></a></p>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

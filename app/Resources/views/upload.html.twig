@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="item">
+      <h1>upload</h1>
+      <div class="itemtext">
+        {% if formUpload is defined %}
+      {{ form_start(formUpload) }}
+      {{ form_widget(formUpload) }}
+      {{ form_end(formUpload) }}
+      {% endif %}
+      </div>
+    </div>
+{% endblock %}
